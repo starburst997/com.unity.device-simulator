@@ -30,7 +30,7 @@ namespace Unity.DeviceSimulator
             m_InternetReachabilityEnumField.RegisterValueChangedCallback((evt) => { m_ApplicationSimulation.ShimmedInternetReachability = (NetworkReachability)evt.newValue; });
 
             var onLowMemoryButton = m_RootElement.Q<Button>("application-low-memory");
-            onLowMemoryButton.clickable = new Clickable(() => m_ApplicationSimulation.OnLowMemory());
+            //onLowMemoryButton.clickable = new Clickable(() => m_ApplicationSimulation.OnLowMemory());
         }
 
         public void StoreSerializationStates(ref SimulatorSerializationStates states)
