@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Simulator;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEditor.UIElements;
@@ -236,6 +237,9 @@ namespace Unity.DeviceSimulator
 
         private void OnDisable()
         {
+            SimulatorFix.IsAndroid = false;
+            SimulatorFix.IsIOS = false;
+            
             m_InputProvider?.Dispose();
             m_ScreenSimulation?.Dispose();
             m_SystemInfoSimulation?.Dispose();
