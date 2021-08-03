@@ -22,12 +22,22 @@ namespace Unity.DeviceSimulator
         {
             if (m_LastEventFrame != m_LastSubmittedEventFrame)
             {
-                Input.SimulateTouch(m_NextId, m_NextPosition, m_NextPhase);
+                Input.SimulateTouch(new Touch()
+                {
+                    fingerId = m_NextId,
+                    position = m_NextPosition,
+                    phase = m_NextPhase
+                });
                 m_LastSubmittedEventFrame = m_LastEventFrame;
             }
             else if (m_NextPhase == TouchPhase.Moved || m_NextPhase == TouchPhase.Began)
             {
-                Input.SimulateTouch(m_NextId, m_NextPosition, TouchPhase.Stationary);
+                Input.SimulateTouch(new Touch()
+                {
+                    fingerId = m_NextId,
+                    position = m_NextPosition,
+                    phase = TouchPhase.Stationary
+                });
             }
         }
 
