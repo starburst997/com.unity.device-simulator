@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Simulator;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.Rendering;
@@ -41,6 +42,13 @@ namespace Unity.DeviceSimulator
                     Debug.LogWarning("Could not pick GraphicsDeviceType, the game would fail to launch");
                 }
             }
+
+            if (m_DeviceInfo != null)
+            {
+                SimulatorFix.IsAndroid = m_DeviceInfo.IsAndroidDevice();
+                SimulatorFix.IsIOS = m_DeviceInfo.IsiOSDevice();
+            }
+            
             Enable();
         }
 
