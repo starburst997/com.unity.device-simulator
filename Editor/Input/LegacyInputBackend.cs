@@ -22,30 +22,30 @@ namespace Unity.DeviceSimulator
         {
             if (m_LastEventFrame != m_LastSubmittedEventFrame)
             {
-#if UNITY_2021_2_OR_NEWER
+#if SIMULATOR_LEGACY_FIX
+                Input.SimulateTouch(m_NextId, m_NextPosition, m_NextPhase);
+#else
                 Input.SimulateTouch(new Touch()
                 {
                     fingerId = m_NextId,
                     position = m_NextPosition,
                     phase = m_NextPhase
                 });
-#else
-                Input.SimulateTouch(m_NextId, m_NextPosition, m_NextPhase);
 #endif
 
                 m_LastSubmittedEventFrame = m_LastEventFrame;
             }
             else if (m_NextPhase == TouchPhase.Moved || m_NextPhase == TouchPhase.Began)
             {
-#if UNITY_2021_2_OR_NEWER
+#if SIMULATOR_LEGACY_FIX
+                Input.SimulateTouch(m_NextId, m_NextPosition, TouchPhase.Stationary);
+#else
                 Input.SimulateTouch(new Touch()
                 {
                     fingerId = m_NextId,
                     position = m_NextPosition,
                     phase = TouchPhase.Stationary
                 });
-#else
-                Input.SimulateTouch(m_NextId, m_NextPosition, TouchPhase.Stationary);
 #endif
             }
         }
