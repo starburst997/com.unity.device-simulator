@@ -50,12 +50,12 @@ namespace Unity.DeviceSimulator
         private SimulatorControlPanel m_ControlPanel;
         private SimulatorPreviewPanel m_PreviewPanel;
 
-        [MenuItem("Window/General/Device Simulator", false, 2000)]
+        /*[MenuItem("Window/General/Device Simulator", false, 2000)]
         public static void ShowWindow()
         {
             SimulatorWindow window = GetWindow<SimulatorWindow>();
             window.Show();
-        }
+        }*/
 
         private void LoadRenderDoc()
         {
